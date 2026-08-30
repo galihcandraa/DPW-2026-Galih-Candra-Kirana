@@ -13,7 +13,7 @@ body {
 }
 
 a {
-    color: #1d5b8a;
+    color: #13621d;
     text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 
 /* === Header & Navbar === */
 header {
-    background-color: #1d5b8a;
+    background-color: #13621d;
     color: #fff;
     padding: 1rem 1.5rem;
     display: flex;
@@ -64,13 +64,13 @@ section {
 
 section h2 {
     margin-bottom: 1rem;
-    color: #1d5b8a;
+    color: #13621d;
 }
 
 /* === Kartu Statistik === */
 main section:nth-of-type(2) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
 }
 
@@ -90,7 +90,11 @@ main section:nth-of-type(2) article h3 {
 main section:nth-of-type(2) article p {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1d5b8a;
+    color: #13621d;
+}
+
+main section:nth-of-type(2) h2 {
+    grid-column: 1 / -1;
 }
 
 /* === Tabel === */
@@ -106,7 +110,7 @@ th, td {
 }
 
 thead {
-    background-color: #1d5b8a;
+    background-color: #13621d;
     color: #fff;
 }
 
@@ -128,6 +132,11 @@ td button {
 }
 
 td button:first-of-type {
+    background-color: #446fdb;
+    color: #fff;
+}
+
+td button.btn-edit {
     background-color: #f0ad4e;
     color: #fff;
 }
@@ -159,7 +168,7 @@ form input, form select {
 }
 
 form button[type="submit"] {
-    background-color: #1d5b8a;
+    background-color: #1f902e;
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -169,9 +178,17 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #165869;
+    background-color: #13621d;
 }
 
 form p {
     margin-bottom: 1rem;
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    color: #7a8794;
+    font-size: 0.9rem;
 }
