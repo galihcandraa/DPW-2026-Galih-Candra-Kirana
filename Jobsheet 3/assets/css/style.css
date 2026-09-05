@@ -212,6 +212,15 @@ footer {
     overflow-x: auto;
 }
 
+/*  ===== Responsive Breakpoints ===== */
+/* Tablet ke bawah */
+@media (max-width: 768px) {
+    main section:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*  Mobile */
 @media (max-width: 480px) {
     header {
         position: relative;
@@ -235,5 +244,13 @@ footer {
     header nav ul {
         flex-direction: column;
         gap: 0.75rem;
+    }
+
+    main section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+
+    form input, form select {
+        max-width: 100%;
     }
 }
