@@ -1,4 +1,4 @@
-# LAPORAN PRAKTIKUM JOBSHEET 02
+# LAPORAN PRAKTIKUM JOBSHEET 03
 
 **Topik:** Responsive Design
 
@@ -13,7 +13,7 @@
 ## 1.2 Struktur Folder
 
 ```text
-Jobsheet 2/
+Jobsheet 3/
 ├── index.html
 ├── README.md
 ├── anggota/
@@ -31,4 +31,4 @@ Jobsheet 2/
 
 1. Direktori assets/css/: Memuat file style.css yang digunakan untuk menerapkan gaya visual tingkat lanjut dan tata letak responsif pada sistem
 
-2. Pembaruan Halaman HTML: Pembaruan struktur tag pada index.html, modul anggota (list.html, tambah.html), dan modul buku (list.html, tambah.html) agar lebih kompatibel dengan manipulasi layout pada CSS eksternal[cite: 5].
+2. Pembaruan Halaman HTML: Pembaruan struktur tag pada index.html, modul anggota (list.html, tambah.html), dan modul buku (list.html, tambah.html) agar lebih kompatibel dengan manipulasi layout pada CSS eksternal.
