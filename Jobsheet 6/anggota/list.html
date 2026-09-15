@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPUS | Anggota</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>SIPUS</h1>
+        <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="../buku/list.html">Daftar Buku</a></li>
+                <li><a href="../buku/tambah.html">Tambah Buku</a></li>
+                <li><a href="list.html">Daftar Anggota</a></li>
+                <li><a href="tambah.html">Tambah Anggota</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Daftar Anggota</h2>
+            <div class="search-box">
+                <label for="search-input">Cari Nama Anggota</label>
+                <input type="text" id="search-input" placeholder="Ketik judul anggota...">
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. Anggota</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>No. HP</th>
+                            <th>Email</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>A003</td>
+                            <td>Dewi Lestari</td>
+                            <td>Surabaya</td>
+                            <td>0814xxxx</td>
+                            <td>Dewiiii@gmail.com</td>
+                            <td>
+                                <button type="button">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>A004</td>
+                            <td>Ahmad Fauzi</td>
+                            <td>Sidoarjo</td>
+                            <td>0815xxxx</td>
+                            <td>ahmadfauzii@gmail.com</td>
+                            <td>
+                                <button type="button">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SIPUS &mdash; Jobsheet 6</p>
+    </footer>
+    <script src="../assets/js/app.js"></script>
+</body>
+
+</html>>
