@@ -11,10 +11,10 @@ function initNavToggle() {
 
 // === Konfirmasi hapus ===
 function initHapusConfirm() {
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     const btn = e.target.closest(".btn-hapus");
     if (!btn) return;
-    
+
     const row = btn.closest("tr");
     const nama = row ? row.querySelector("td")?.textContent : "data ini";
     const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?")
@@ -23,7 +23,8 @@ function initHapusConfirm() {
       --counter;
       updateCounterData();
     }
-  })
+    console.log(e.target);
+  });
 }
 
 let counter = 0;
@@ -42,6 +43,11 @@ function updateCounterData() {
   }
 
   p.textContent = "Menampilkan " + counter + " dari " + rows.length;
+}
+
+function setCounter(jumlah) {
+  counter = jumlah;
+  updateCounterData();
 }
 
 // === Filter / pencarian tabel ===
@@ -142,6 +148,63 @@ function initValidasiForm() {
       e.preventDefault();
     }
   })
+}
+
+// menampilkan daftar buku & anggota secara asinkron
+export async function muatDaftar(daftar) {
+  const tbody = document.querySelector(".table-responsive table tbody");
+  const loading = document.getElementById("loading-indicator");
+  if (!tbody) return;
+
+  loading.style.display = "block";
+  tbody.innerHTML = "";
+
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    const res = await fetch("../data/" + daftar + ".json");
+    if (!res.ok) {
+      throw new Error("Gagal mengambil data (status " + res.status + ")");
+    }
+
+    const hasilData = await res.json();
+
+    hasilData.forEach(function (isi) {
+      const tr = document.createElement("tr");
+      if (daftar === "buku") {
+        tr.innerHTML =
+          "<td>" + isi.judul + "</td>" +
+          "<td>" + isi.pengarang + "</td>" +
+          "<td>" + isi.tahun + "</td>" +
+          "<td>" + isi.stok + "</td>" +
+          "<td>" +
+          "<button type=\"button\">Detail</button>" +
+          "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
+          "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
+          "</td>";
+      } else if (daftar === "anggota") {
+        tr.innerHTML =
+          "<td>" + isi.no_anggota + "</td>" +
+          "<td>" + isi.nama + "</td>" +
+          "<td>" + isi.alamat + "</td>" +
+          "<td>" + isi.no_hp + "</td>" +
+          "<td>" + isi.email + "</td>" +
+          "<td>" +
+          "<button type=\"button\">Detail</button>" +
+          "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
+          "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
+          "</td>";
+      }
+      tbody.appendChild(tr);
+    });
+
+    setCounter(hasilData.length);
+  } catch (err) {
+    tbody.innerHTML =
+      "<tr><td colspan=\"6\">Gagal memuat data: " + err.message + "</td></tr>";
+  } finally {
+    loading.style.display = "none";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
