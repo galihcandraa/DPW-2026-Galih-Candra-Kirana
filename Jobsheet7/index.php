@@ -1,5 +1,6 @@
 <?php
 $page_title = "Beranda";
+$active_page = 'beranda';
 include __DIR__ . '/includes/header.php';
 ?>
 
