@@ -192,7 +192,7 @@ form label {
 form input,
 form select {
     width: 100%;
-    max-width: 400px;
+    max-width: 1000px;
     padding: 0.55rem 0.7rem;
     border: 1px solid #cdd4da;
     border-radius: 4px;
@@ -200,7 +200,7 @@ form select {
 }
 
 form button[type="submit"] {
-    background-color: #1f902e;
+    background-color: #9A3412;
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -210,7 +210,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #13621d;
+    background-color: #7C2D12;
 }
 
 form p {
