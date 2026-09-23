@@ -78,7 +78,7 @@ nav ul li a:hover:not(.active) {
 
 /* === Main Layout */
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
@@ -141,7 +141,7 @@ td {
 }
 
 thead {
-    background-color: #13621d;
+    background-color: #9A3412;
     color: #fff;
 }
 
@@ -192,7 +192,7 @@ form label {
 form input,
 form select {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0.55rem 0.7rem;
     border: 1px solid #cdd4da;
     border-radius: 4px;

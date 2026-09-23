@@ -1,0 +1,82 @@
+[
+    {
+        "judul": "Laut Bercerita",
+        "pengarang": "Leila S. Chudori",
+        "tahun": 2017,
+        "stok": 7,
+        "isbn": "978-602-424-694-5",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Hujan",
+        "pengarang": "Tere Liye",
+        "tahun": 2016,
+        "stok": 3,
+        "isbn": "978-602-03-2478-4",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Supernova: Ksatria dan Puteri",
+        "pengarang": "Dee Lestari",
+        "tahun": 2001,
+        "stok": 2,
+        "isbn": "978-979-96257-0-4",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Saman",
+        "pengarang": "Ayu Utami",
+        "tahun": 1998,
+        "stok": 1,
+        "isbn": "978-979-9023-38-8",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Ayat-Ayat Cinta",
+        "pengarang": "Habiburrahman El Shirazy",
+        "tahun": 2004,
+        "stok": 0,
+        "isbn": "978-979-3604-02-6",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Aroma Karsa",
+        "pengarang": "Dee Lestari",
+        "tahun": 2018,
+        "stok": 5,
+        "isbn": "978-602-291-463-1",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Amba",
+        "pengarang": "Laksmi Pamuntjak",
+        "tahun": 2012,
+        "stok": 4,
+        "isbn": "978-979-22-8703-9",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Garis Waktu",
+        "pengarang": "Fiersa Besari",
+        "tahun": 2016,
+        "stok": 8,
+        "isbn": "978-602-430-001-2",
+        "kategori": "non-fiksi"
+    },
+    {
+        "judul": "Anak Semua Bangsa",
+        "pengarang": "Pramoedya Ananta Toer",
+        "tahun": 1980,
+        "stok": 2,
+        "isbn": "978-979-97312-4-5",
+        "kategori": "fiksi"
+    },
+    {
+        "judul": "Orang-Orang Biasa",
+        "pengarang": "Andrea Hirata",
+        "tahun": 2019,
+        "stok": 0,
+        "isbn": "978-602-291-524-9",
+        "kategori": "fiksi"
+    }
+]
