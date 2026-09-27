@@ -32,7 +32,7 @@ function updateCounterData() {
   if (!searchBox || !tbody) return;
 
   const rows = Array.from(tbody.querySelectorAll("tr")).filter(row => !row.querySelector("td[colspan]"));
-  
+
   const totalData = rows.length;
   const barisTampil = rows.filter(row => row.style.display != "none").length;
 
@@ -55,7 +55,7 @@ function initTableFilter() {
   if (!input || !table) return;
 
   let rows = table.querySelectorAll("tbody tr");
-  counter = rows.length;
+  let counter = rows.length;
   updateCounterData();
 
   input.addEventListener("keyup", function () {
@@ -166,6 +166,19 @@ export async function muatDaftar(daftar) {
     }
 
     const hasilData = await res.json();
+
+    console.log(hasilData);
+    console.log(hasilData.length);
+    const barisKosong = document.getElementById("info-data");
+    if (hasilData.length > 0) {
+      if (barisKosong) {
+        barisKosong.remove();
+      }
+    } else {
+      if(barisKosong) {
+        barisKosong.style.display = "table-row";
+      }
+    }
 
     hasilData.forEach(function (isi) {
       const tr = document.createElement("tr");

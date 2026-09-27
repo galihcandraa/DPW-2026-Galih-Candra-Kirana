@@ -8,12 +8,17 @@ $isbn = $_POST['isbn'] ?? '';
 $stok = trim($_POST['stok'] ?? '');
 $kategori = trim($_POST['kategori'] ?? '');
 
+$regex = '/^[0-9-]+$/';
+
 $errors = [];
 if ($judul === '') {
     $errors[] = 'Judul wajib diisi.';
 }
 if ($pengarang === '') {
     $errors[] = 'Pengarang wajib diisi.';
+}
+if (!empty($isbn) && !preg_match($regex, $isbn)) {
+    $errors[] = 'ISBN hanya berisi angka dan tanda hubung.';
 }
 if (!is_numeric($tahun) || $tahun < 1900 || $tahun > 2026) {
     $errors[] = 'Tahun harus di antara 1900 - 2026.';

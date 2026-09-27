@@ -35,8 +35,8 @@ $daftarBuku = $_SESSION['buku'] ?? [];
 
             <tbody>
                 <?php if (empty($daftarBuku)): ?>
-                    <tr>
-                        <td colspan="5">Belum ada data buku. Silahkan tambah lewat menu "Tambah Buku".</td>
+                    <tr id="info-data" style="display: none;">
+                        <td colspan="6">Belum ada data buku. Silahkan tambah lewat menu "Tambah Buku".</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($daftarBuku as $buku): ?>

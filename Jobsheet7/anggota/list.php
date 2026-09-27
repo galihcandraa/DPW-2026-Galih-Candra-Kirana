@@ -35,6 +35,36 @@ $daftarAnggota = $_SESSION['anggota'] ?? [];
             </thead>
 
             <tbody>
+                <?php if (empty($daftarAnggota)): ?>
+                    <tr id="info-data" style="display: none;">
+                        <td colspan="5">Belum ada data anggota. Silahkan tambah lewat menu "Tambah Anggota".</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($daftarAnggota as $anggota): ?>
+                        <tr>
+                            <td>
+                                <?php echo $no_anggota['no_Anggota'] ?>
+                            </td>
+                            <td>
+                                <?php echo $nama['nama'] ?>
+                            </td>
+                            <td>
+                                <?php echo $alamat['alamat'] ?>
+                            </td>
+                            <td>
+                                <?php echo $no_hp['no_hp'] ?>
+                            </td>
+                            <td>
+                                <?php echo $email['email'] ?>
+                            </td>
+                            <td>
+                                <button type="button">Detail</button>
+                                <button type="button" class="btn-edit">Edit</button>
+                                <button type="button" class="btn-hapus">Hapus</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
