@@ -2,6 +2,7 @@
 $page_title = "List Anggota";
 $active_page = 'list_anggota';
 include __DIR__ . '/../includes/header.php';
+require __DIR__ . '/includes/koneksi.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
