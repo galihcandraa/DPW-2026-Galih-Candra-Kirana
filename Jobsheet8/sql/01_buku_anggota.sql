@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS buku (
     judul VARCHAR(255) NOT NULL,
     pengarang VARCHAR(255) NOT NULL,
     tahun INTEGER NOT NULL,
-    isbn INTEGER NOT NULL DEFAULT 0,
+    isbn VARCHAR(30),
+    stok INTEGER NOT NULL DEFAULT 0,
     kategori VARCHAR(50)
 );
 
@@ -13,5 +14,6 @@ CREATE TABLE IF NOT EXISTS anggota (
     nama VARCHAR(255) NOT NULL,
     no_anggota VARCHAR(50) NOT NULL UNIQUE,
     alamat VARCHAR(255),
-    no_hp VARCHAR(30)
+    no_hp VARCHAR(30),
+    email varchar(30)
 );
