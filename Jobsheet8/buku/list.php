@@ -2,11 +2,12 @@
 $page_title = "List Buku";
 $active_page = 'list_buku';
 include __DIR__ . '/../includes/header.php';
-require __DIR__ . '/includes/koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
-$daftarBuku = $_SESSION['buku'] ?? [];
+
+$daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section>
@@ -61,7 +62,7 @@ $daftarBuku = $_SESSION['buku'] ?? [];
     </div>
 </section>
 
-<?php 
+<?php
 $extra_scripts = [
     $base . 'assets/js/buku.js'
 ];

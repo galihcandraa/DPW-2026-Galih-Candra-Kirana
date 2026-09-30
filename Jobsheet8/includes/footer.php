@@ -1,7 +1,7 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 SIPUS &mdash; Jobsheet 7</p>
+    <p>&copy; 2026 SIPUS &mdash; Jobsheet 8</p>
 </footer>
 <script type="module" src="<?php echo $base; ?>assets/js/app.js"></script>
 <?php if (!empty($extra_scripts)):

@@ -2,6 +2,33 @@
 $page_title = "Beranda";
 $active_page = 'beranda';
 include __DIR__ . '/includes/header.php';
+require __DIR__ . '/includes/koneksi.php';
+
+$countDbBuku = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
+$countdDbAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+
+$jsonBukuCount = 0;
+$jsonAnggotaCount = 0;
+
+$fileBuku = __DIR__ . '/data/buku.json';
+if (file_exists($fileBuku)) {
+    $dataBukuJSON = json_decode(file_get_contents($fileBuku), true);
+    if (is_array($dataBukuJSON)) {
+        $jsonBukuCount = count($dataBukuJSON);
+    }
+}
+
+$fileAnggota = __DIR__ . '/data/anggota.json';
+if (file_exists($fileAnggota)) {
+    $dataAnggotaJSON = json_decode(file_get_contents($fileAnggota), true);
+    if (is_array($dataAnggotaJSON)) {
+        $jsonAnggotaCount = count($dataAnggotaJSON);
+    }
+}
+
+// 3. Jumlahkan data Database + data JSON
+$totalBuku = $countDbBuku + $jsonBukuCount;
+$totalAnggota = $countdDbAnggota + $jsonAnggotaCount;
 ?>
 
 <section>
@@ -13,12 +40,12 @@ include __DIR__ . '/includes/header.php';
     <h2>Ringkasan</h2>
     <article>
         <h3>Total Buku</h3>
-        <p>105</p>
+        <p><?php echo $totalBuku; ?></p>
     </article>
 
     <article>
         <h3>Total Anggota</h3>
-        <p>15</p>
+        <p><?php echo $totalAnggota; ?></p>
     </article>
 
     <article>

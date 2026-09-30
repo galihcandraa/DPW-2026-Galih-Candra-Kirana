@@ -2,11 +2,12 @@
 $page_title = "List Anggota";
 $active_page = 'list_anggota';
 include __DIR__ . '/../includes/header.php';
-require __DIR__ . '/includes/koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
-$daftarAnggota = $_SESSION['anggota'] ?? [];
+
+$daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section>
@@ -44,19 +45,19 @@ $daftarAnggota = $_SESSION['anggota'] ?? [];
                     <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
                             <td>
-                                <?php echo $no_anggota['no_Anggota'] ?>
+                                <?php echo $anggota['no_anggota'] ?>
                             </td>
                             <td>
-                                <?php echo $nama['nama'] ?>
+                                <?php echo $anggota['nama'] ?>
                             </td>
                             <td>
-                                <?php echo $alamat['alamat'] ?>
+                                <?php echo $anggota['alamat'] ?>
                             </td>
                             <td>
-                                <?php echo $no_hp['no_hp'] ?>
+                                <?php echo $anggota['no_hp'] ?>
                             </td>
                             <td>
-                                <?php echo $email['email'] ?>
+                                <?php echo $anggota['email'] ?>
                             </td>
                             <td>
                                 <button type="button">Detail</button>

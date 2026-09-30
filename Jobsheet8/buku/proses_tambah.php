@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/includes/koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $judul = trim($_POST['judul'] ?? '');
 $pengarang = trim($_POST['pengarang'] ?? '');
@@ -46,7 +46,7 @@ $stmt->execute([
     'tahun' => (int) $tahun,
     'isbn' => $isbn,
     'stok' => (int) $stok,
-    'kategori' => $kategori,
+    'kategori' => $kategori
 ]);
 
 $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Buku berhasil ditambahkan.'];
