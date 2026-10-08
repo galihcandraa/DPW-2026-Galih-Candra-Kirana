@@ -45,7 +45,11 @@ function updateCounterData() {
     searchBox.appendChild(p);
   }
 
-  p.textContent = "Menampilkan " + barisTampil + " dari " + totalData;
+  if (barisTampil === totalData) {
+    p.textContent = "Total " + totalData + " data";
+  } else {
+    p.textContent = "Menampilkan " + barisTampil + " dari " + totalData + " data";
+  }
 }
 
 // === Filter / pencarian tabel ===
@@ -175,7 +179,7 @@ export async function muatDaftar(daftar) {
         barisKosong.remove();
       }
     } else {
-      if(barisKosong) {
+      if (barisKosong) {
         barisKosong.style.display = "table-row";
       }
     }

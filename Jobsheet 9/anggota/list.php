@@ -19,7 +19,7 @@ $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll
     <?php endif; ?>
     <div class="search-box">
         <label for="search-input">Cari Nama Anggota</label>
-        <input type="text" id="search-input" placeholder="Ketik judul anggota...">
+        <input type="text" id="search-input" placeholder="Ketik nama anggota...">
     </div>
 
     <p id="loading-indicator" style="display: none;">Memuat data...</p>
@@ -59,9 +59,9 @@ $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll
                             <td>
                                 <?php echo $anggota['email'] ?>
                             </td>
-                            <td>
+                            <td style="display: flex; gap: 0;">
                                 <button type="button">Detail</button>
-                                <button type="button" class="btn-edit">Edit</button>
+                                <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <button type="button" class="btn-hapus">Hapus</button>
                             </td>
                         </tr>
