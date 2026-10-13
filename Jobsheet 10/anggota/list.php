@@ -13,15 +13,15 @@ $offset = ($page - 1) * $perPage;
 $keyword = trim($_GET['q'] ?? '');
 
 if ($keyword !== '') {
-    $hitung = $pdo->prepare("SELECT COUNT(*) FROM anggota WHERE nama ILIKE :kw");
+    $hitung = $pdo->prepare("SELECT COUNT(*) FROM anggota WHERE nama ILIKE :kw AND deleted_at IS NULL");
     $hitung->execute(['kw' => '%' . $keyword . '%']);
     $totalRows = $hitung->fetchColumn();
 
-    $stmt = $pdo->prepare("SELECT * FROM anggota WHERE nama ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $stmt = $pdo->prepare("SELECT * FROM anggota WHERE nama ILIKE :kw AND deleted_at IS NULL ORDER BY id DESC LIMIT :limit OFFSET :offset");
     $stmt->bindValue('kw', '%' . $keyword . '%');
 } else {
-    $totalRows = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
-    $stmt = $pdo->prepare("SELECT * FROM anggota ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $totalRows = $pdo->query("SELECT COUNT(*) FROM anggota where deleted_at IS NULL")->fetchColumn();
+    $stmt = $pdo->prepare("SELECT * FROM anggota where deleted_at IS NULL ORDER BY id DESC LIMIT :limit OFFSET :offset");
 }
 $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
 $stmt->bindValue('offset', $offset, PDO::PARAM_INT);

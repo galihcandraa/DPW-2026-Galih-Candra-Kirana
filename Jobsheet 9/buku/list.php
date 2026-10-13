@@ -13,22 +13,23 @@ $offset = ($page - 1) * $perPage;
 $keyword = trim($_GET['q'] ?? '');
 
 if ($keyword !== '') {
-    $hitung = $pdo->prepare("SELECT COUNT(*) FROM buku WHERE judul ILIKE :kw");
+    $hitung = $pdo->prepare("SELECT COUNT(*) FROM buku WHERE judul ILIKE :kw AND deleted_at IS NULL");
     $hitung->execute(['kw' => '%' . $keyword . '%']);
     $totalRows = $hitung->fetchColumn();
 
-    $stmt = $pdo->prepare("SELECT * FROM buku WHERE judul ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $stmt = $pdo->prepare("SELECT * FROM buku WHERE judul ILIKE :kw AND deleted_at IS NULL ORDER BY id DESC LIMIT :limit OFFSET :offset");
     $stmt->bindValue('kw', '%' . $keyword . '%');
 } else {
-    $totalRows = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
-    $stmt = $pdo->prepare("SELECT * FROM buku ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $totalRows = $pdo->query("SELECT COUNT(*) FROM buku where deleted_at IS NULL")->fetchColumn();
+    $stmt = $pdo->prepare("SELECT * FROM buku where deleted_at IS NULL ORDER BY id DESC LIMIT :limit OFFSET :offset");
 }
 $stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
 $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 
 $daftarBuku = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$totalPages = max(1, (int) ceil($totalRows / $perPage)); ?>
+$totalPages = max(1, (int) ceil($totalRows / $perPage)); 
+?>
 
 <section>
     <h2>Daftar Buku</h2>

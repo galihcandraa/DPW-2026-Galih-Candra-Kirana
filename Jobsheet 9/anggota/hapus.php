@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $id = $_POST['id'] ?? null;
 if ($id) {
-    $stmt = $pdo->prepare("DELETE FROM anggota WHERE id = :id");
+    $stmt = $pdo->prepare("UPDATE anggota SET deleted_at = CURRENT_TIMESTAMP WHERE id = :id");
     $stmt->execute(['id' => $id]);
     $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil dihapus.'];
 }
