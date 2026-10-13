@@ -297,6 +297,26 @@ pre {
     color: #721c24;
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.pagination a {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    color: #1d5b8a;
+}
+
+.pagination a.active {
+    background-color: #9A3412;
+    color: #fff;
+    border-color: #9A3412;
+}
+
 /*  ===== Responsive Breakpoints ===== */
 /* Monitor */
 @media (max-width: 1400px) {
