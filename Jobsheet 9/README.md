@@ -1,26 +1,31 @@
-# LAPORAN PRAKTIKUM JOBSHEET 08
+# LAPORAN PRAKTIKUM JOBSHEET 09
 
-**Topik:** Koneksi PostgreSQL
+**Topik:** CRUD Penuh
 
 ---
 
 ## 1.1 Tujuan
 
-1. Memigrasikan sistem penyimpanan dan pemuatan data dari basis file system statis (JSON) ke sistem basis data relasional (PostgreSQL).
-2. Mengonfigurasi sambungan dan mengelola interaksi database menggunakan ekstensi PHP Data Objects (PDO).
-3. Memulai proses transisi arsitektur pemuatan data aplikasi dari Client-Side (JavaScript fetch API) menuju Server-Side Rendering (PHP), dengan mengimplementasikan penggabungan sumber data ganda (database dan JSON lokal).
+1. Mengimplementasikan antarmuka dan logika pemrosesan untuk memperbarui (Update) data yang sudah ada di dalam database PostgreSQL.
+
+2. Mengimplementasikan fitur penghapusan (Delete) data secara persisten dan aman dari database.
+
+3. Melengkapi siklus CRUD (Create, Read, Update, Delete) secara menyeluruh pada modul manajemen entitas buku dan anggota.
 
 ---
 
 ## 1.2 Struktur Folder
 
 ```text
-Jobsheet8/
+Jobsheet 9/
 ├── debug_session.php
 ├── index.php
 ├── README.md
 ├── anggota/
+│   ├── edit.php
+│   ├── hapus.php
 │   ├── list.php
+│   ├── proses_edit.php
 │   ├── proses_tambah.php
 │   └── tambah.php
 ├── assets/
@@ -29,16 +34,14 @@ Jobsheet8/
 │   ├── img/
 │   │   └── logo.png
 │   └── js/
-│       ├── anggota.js
-│       ├── app.js
-│       └── buku.js
+│       └── app.js
 ├── buku/
+│   ├── edit.php
+│   ├── hapus.php
 │   ├── list.php
+│   ├── proses_edit.php
 │   ├── proses_tambah.php
 │   └── tambah.php
-├── data/
-│   ├── anggota.json
-│   └── buku.json
 ├── docs/
 │   └── wireframe.md
 ├── includes/
@@ -51,6 +54,8 @@ Jobsheet8/
 
 ## 1.3 Ringkasan
 
-1. Modul Koneksi Database: Penambahan file sentral koneksi.php pada direktori includes/ yang bertugas untuk melakukan instansiasi objek PDO dan menghubungkan aplikasi web ke server PostgreSQL.
-2. Definisi Skema (SQL): Pengenalan direktori sql/ beserta skrip 01_buku_anggota.sql yang menjadi kerangka dasar instruksi Data Definition Language (DDL) untuk inisialisasi tabel buku dan anggota pada awal proyek
-3. Transisi Metode Rendering (Fase Hibrida): Melakukan penyesuaian logika pemuatan data di sisi server (PHP) untuk mengintegrasikan hasil penghitungan query dari database PostgreSQL bersamaan dengan pembacaan data dari file .json lama, sebagai langkah awal sebelum beralih ke Server-Side Rendering seutuhnya.
+1. Antarmuka Pembaruan Data: Penambahan file edit.php pada modul anggota dan buku yang berfungsi sebagai formulir interaktif untuk menampilkan dan mengubah data yang sudah ada.
+
+2. Logika Eksekusi Update: Pembuatan file proses_edit.php yang bertugas menangkap masukan baru dari pengguna dan menjalankan perintah UPDATE ke database PostgreSQL secara aman.
+
+3. Fitur Penghapusan Data: Penambahan file hapus.php untuk menerima identitas data (seperti ID) dan mengeksekusi perintah DELETE secara persisten langsung dari database.
