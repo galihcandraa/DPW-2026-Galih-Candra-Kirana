@@ -11,18 +11,16 @@ function initNavToggle() {
 
 // === Konfirmasi hapus ===
 function initHapusConfirm() {
-  document.addEventListener("click", function (e) {
-    const btn = e.target.closest(".btn-hapus");
-    if (!btn) return;
+  document.addEventListener("submit", function (e) {
+    const form = e.target;
+    if (!form.classList.contains("form-hapus")) return;
 
-    const row = btn.closest("tr");
+    const row = form.closest("tr");
     const nama = row ? row.querySelector("td")?.textContent : "data ini";
     const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?")
-    if (yakin && row) {
-      row.remove();
-      updateCounterData();
+    if (!yakin) {
+      e.preventDefault();
     }
-    console.log(e.target);
   });
 }
 
@@ -153,76 +151,84 @@ function initValidasiForm() {
 }
 
 // menampilkan daftar buku & anggota secara asinkron
-export async function muatDaftar(daftar) {
-  const tbody = document.querySelector(".table-responsive table tbody");
-  const loading = document.getElementById("loading-indicator");
-  if (!tbody) return;
+//  async function muatDaftar(daftar) {
+//   const tbody = document.querySelector(".table-responsive table tbody");
+//   const loading = document.getElementById("loading-indicator");
+//   if (!tbody) return;
 
-  loading.style.display = "block";
-  // tbody.innerHTML = "";
+//   loading.style.display = "block";
+//   // tbody.innerHTML = "";
 
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+//   try {
+//     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const res = await fetch("../data/" + daftar + ".json");
-    if (!res.ok) {
-      throw new Error("Gagal mengambil data (status " + res.status + ")");
-    }
+//     const res = await fetch("../data/" + daftar + ".json");
+//     if (!res.ok) {
+//       throw new Error("Gagal mengambil data (status " + res.status + ")");
+//     }
 
-    const hasilData = await res.json();
+//     const hasilData = await res.json();
 
-    console.log(hasilData);
-    console.log(hasilData.length);
-    const barisKosong = document.getElementById("info-data");
-    if (hasilData.length > 0) {
-      if (barisKosong) {
-        barisKosong.remove();
-      }
-    } else {
-      if (barisKosong) {
-        barisKosong.style.display = "table-row";
-      }
-    }
+//     console.log(hasilData);
+//     console.log(hasilData.length);
+//     const barisKosong = document.getElementById("info-data");
+//     if (hasilData.length > 0) {
+//       if (barisKosong) {
+//         barisKosong.remove();
+//       }
+//     } else {
+//       if (barisKosong) {
+//         barisKosong.style.display = "table-row";
+//       }
+//     }
 
-    hasilData.forEach(function (isi) {
-      const tr = document.createElement("tr");
-      if (daftar === "buku") {
-        tr.innerHTML =
-          "<td>" + isi.judul + "</td>" +
-          "<td>" + isi.pengarang + "</td>" +
-          "<td>" + isi.tahun + "</td>" +
-          "<td>" + isi.isbn + "</td>" +
-          "<td>" + isi.stok + "</td>" +
-          "<td>" + isi.kategori + "</td>" +
-          "<td>" +
-          "<button type=\"button\">Detail</button>" +
-          "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
-          "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
-          "</td>";
-      } else if (daftar === "anggota") {
-        tr.innerHTML =
-          "<td>" + isi.no_anggota + "</td>" +
-          "<td>" + isi.nama + "</td>" +
-          "<td>" + isi.alamat + "</td>" +
-          "<td>" + isi.no_hp + "</td>" +
-          "<td>" + isi.email + "</td>" +
-          "<td>" +
-          "<button type=\"button\">Detail</button>" +
-          "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
-          "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
-          "</td>";
-      }
-      tbody.appendChild(tr);
-    });
+//     hasilData.forEach(function (isi) {
+//       const tr = document.createElement("tr");
+//       if (daftar === "buku") {
+//         tr.innerHTML =
+//           "<td>" + isi.judul + "</td>" +
+//           "<td>" + isi.pengarang + "</td>" +
+//           "<td>" + isi.tahun + "</td>" +
+//           "<td>" + isi.isbn + "</td>" +
+//           "<td>" + isi.stok + "</td>" +
+//           "<td>" + isi.kategori + "</td>" +
+//           "<td>" +
+//           "<button type=\"button\">Detail</button>" +
+//           "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
+//           "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
+//           "</td>";
+//       } else if (daftar === "anggota") {
+//         tr.innerHTML =
+//           "<td>" + isi.no_anggota + "</td>" +
+//           "<td>" + isi.nama + "</td>" +
+//           "<td>" + isi.alamat + "</td>" +
+//           "<td>" + isi.no_hp + "</td>" +
+//           "<td>" + isi.email + "</td>" +
+//           "<td>" +
+//           "<button type=\"button\">Detail</button>" +
+//           "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
+//           "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
+//           "</td>";
+//       }
+//       tbody.appendChild(tr);
+//     });
 
-    updateCounterData();
-  } catch (err) {
-    tbody.innerHTML =
-      "<tr><td colspan=\"6\">Gagal memuat data: " + err.message + "</td></tr>";
-  } finally {
-    loading.style.display = "none";
-  }
-}
+//     updateCounterData();
+//   } catch (err) {
+//     tbody.innerHTML =
+//       "<tr><td colspan=\"6\">Gagal memuat data: " + err.message + "</td></tr>";
+//   } finally {
+//     loading.style.display = "none";
+//   }
+// }
+
+// function muatDaftarAnggota() {
+//   muatDaftar("anggota");
+// }
+
+// function muatDaftarBuku() {
+//   muatDaftar("buku");
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavToggle();
