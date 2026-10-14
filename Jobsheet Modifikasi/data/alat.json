@@ -1,0 +1,50 @@
+[
+    {
+        "nama": "Tenda Arpenaz 3+",
+        "merk": "Quechua",
+        "harga": 850000,
+        "total_stok": 10,
+        "stok_tersedia": 8,
+        "kategori": "shelter"
+    },
+    {
+        "nama": "Flysheet 3x4m",
+        "merk": "Arei",
+        "harga": 175000,
+        "total_stok": 15,
+        "stok_tersedia": 12,
+        "kategori": "shelter"
+    },
+    {
+        "nama": "Kompor Mawar Portable",
+        "merk": "Dhaulagiri",
+        "harga": 120000,
+        "total_stok": 20,
+        "stok_tersedia": 15,
+        "kategori": "cooking"
+    },
+    {
+        "nama": "Cooking Set DS-308",
+        "merk": "Kovea",
+        "harga": 250000,
+        "total_stok": 8,
+        "stok_tersedia": 5,
+        "kategori": "cooking"
+    },
+    {
+        "nama": "Trekking Pole Carbon",
+        "merk": "Consina",
+        "harga": 180000,
+        "total_stok": 25,
+        "stok_tersedia": 20,
+        "kategori": "trekking"
+    },
+    {
+        "nama": "Sepatu Gunung Waterproof",
+        "merk": "Eiger",
+        "harga": 1200000,
+        "total_stok": 12,
+        "stok_tersedia": 7,
+        "kategori": "trekking"
+    }
+]
