@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "jenis": "Pinjam",
+        "penyewa": "Budi Santoso",
+        "alat": [
+            "Tenda Dome 4P",
+            "Carrier 60L"
+        ],
+        "waktu": "15 Okt 2026, 09:30"
+    },
+    {
+        "id": 2,
+        "jenis": "Kembali",
+        "penyewa": "Siti Aulia",
+        "alat": [
+            "Kompor Portable"
+        ],
+        "waktu": "15 Okt 2026, 06:10"
+    },
+    {
+        "id": 3,
+        "jenis": "Pinjam",
+        "penyewa": "Rizky Pratama",
+        "alat": [
+            "Sleeping Bag x2"
+        ],
+        "waktu": "14 Okt 2026, 14:20"
+    },
+    {
+        "id": 4,
+        "jenis": "Kembali",
+        "penyewa": "Dewi Lestari",
+        "alat": [
+            "Matras",
+            "Headlamp"
+        ],
+        "waktu": "13 Okt 2026, 16:45"
+    },
+    {
+        "id": 5,
+        "jenis": "Terlambat",
+        "penyewa": "Andi Wijaya",
+        "alat": [
+            "Tenda Dome 2P"
+        ],
+        "waktu": "12 Okt 2026, 08:00"
+    }
+]

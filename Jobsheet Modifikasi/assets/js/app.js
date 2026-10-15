@@ -42,7 +42,7 @@ function updateCounterData() {
     searchBox.appendChild(p);
   }
 
-  p.textContent = "Menampilkan " + counter + " dari " + rows.length;
+  p.textContent = "Menampilkan " + counter + " dari " + rows.length + " data";
 }
 
 function setCounter(jumlah) {
@@ -79,6 +79,21 @@ function initTableFilter() {
 }
 
 // === Validasi form ===
+function tampilkanError(input, pesan) {
+  hapusError(input);
+  const span = document.createElement("span");
+  span.className = "error";
+  span.textContent = pesan;
+  input.insertAdjacentElement("afterend", span);
+}
+
+function hapusError(input) {
+  const next = input.nextElementSibling;
+  if (next && next.classList.contains("error")) {
+    next.remove();
+  }
+}
+
 function initValidasiForm() {
   const form = document.getElementById("form-tambah");
   if (!form) return;
@@ -166,7 +181,8 @@ export async function muatDaftar(daftar) {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const res = await fetch("../data/" + daftar + ".json");
+    const path = daftar === "aktivitas" ? "data/" : "../data/";
+    const res = await fetch(path + daftar + ".json");
     if (!res.ok) {
       throw new Error("Gagal mengambil data (status " + res.status + ")");
     }
@@ -200,6 +216,12 @@ export async function muatDaftar(daftar) {
           "<button type=\"button\" class=\"btn-edit\">Edit</button>" +
           "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
           "</td>";
+      } else if (daftar === "aktivitas") {
+        tr.innerHTML =
+          "<td>" + isi.jenis + "</td>" +
+          "<td>" + isi.penyewa + "</td>" +
+          "<td>" + isi.alat + "</td>" +
+          "<td>" + isi.waktu + "</td>";
       }
       tbody.appendChild(tr);
     });
