@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "Tambah Buku";
 $active_page = 'tambah_buku';
 include __DIR__ . '/../includes/header.php';

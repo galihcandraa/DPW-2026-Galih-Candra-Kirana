@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "List Anggota";
 $active_page = 'list_anggota';
 include __DIR__ . '/../includes/header.php';
