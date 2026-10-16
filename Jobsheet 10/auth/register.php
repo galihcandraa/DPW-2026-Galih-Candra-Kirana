@@ -22,15 +22,15 @@ unset($_SESSION['flash']);
 
     <form method="post" action="proses_register.php">
         <p>
-            <label for="nama">Nama</label><br>
+            <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama" required>
         </p>
         <p>
-            <label for="username">Username</label><br>
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
         </p>
         <p>
-            <label for="password">Password</label><br>
+            <label for="password">Password</label>
             <input type="password" id="password" name="password" required minlength="6">
         </p>
         <p>
