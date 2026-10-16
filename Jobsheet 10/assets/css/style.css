@@ -76,6 +76,18 @@ nav ul li a:hover:not(.active) {
     border-bottom: 2px solid #D97706;
 }
 
+.auth-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #fff;
+}
+
+.auth-status a {
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* === Main Layout */
 main {
     max-width: 1200px;
@@ -94,6 +106,15 @@ section {
 section h2 {
     margin-bottom: 1rem;
     color: #431407;
+}
+
+p a {
+    color: #D97706;
+}
+
+p a:hover {
+    color: #431407;
+    text-decoration: underline;
 }
 
 /* === Kartu Statistik === */

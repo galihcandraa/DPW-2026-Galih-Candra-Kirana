@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$sudahLogin = isset($_SESSION['user_id']);
 
 $__jobsheetRoot = dirname(__DIR__);
 $__scriptDir = dirname($_SERVER['SCRIPT_FILENAME']);
@@ -32,14 +35,27 @@ $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
                         class="<?php echo ($active_page == 'beranda' ? 'active' : '') ?>">Beranda</a></li>
                 <li><a href="<?php echo $base; ?>buku/list.php"
                         class="<?php echo ($active_page == 'list_buku' ? 'active' : '') ?>">Daftar Buku</a></li>
-                <li><a href="<?php echo $base; ?>buku/tambah.php"
-                        class="<?php echo ($active_page == 'tambah_buku' ? 'active' : '') ?>">Tambah Buku</a></li>
-                <li><a href="<?php echo $base; ?>anggota/list.php"
-                        class="<?php echo ($active_page == 'list_anggota' ? 'active' : '') ?>">Daftar Anggota</a></li>
-                <li><a href="<?php echo $base; ?>anggota/tambah.php"
-                        class="<?php echo ($active_page == 'tambah_anggota' ? 'active' : '') ?>">Tambah Anggota</a></li>
+                <?php if ($sudahLogin): ?>
+                    <li><a href="<?php echo $base; ?>buku/tambah.php"
+                            class="<?php echo ($active_page == 'tambah_buku' ? 'active' : '') ?>">Tambah Buku</a></li>
+                    <li><a href="<?php echo $base; ?>anggota/list.php"
+                            class="<?php echo ($active_page == 'list_anggota' ? 'active' : '') ?>">Daftar Anggota</a></li>
+                    <li><a href="<?php echo $base; ?>anggota/tambah.php"
+                            class="<?php echo ($active_page == 'tambah_anggota' ? 'active' : '') ?>">Tambah Anggota</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
+
+        <div class="auth-status">
+            <?php if ($sudahLogin): ?>
+                <span>
+                    <?php echo $_SESSION['nama']; ?>
+                </span>
+                <a href="<?php echo $base; ?>auth/logout.php">Logout</a>
+            <?php else: ?>
+                <a href="<?php echo $base; ?>auth/login.php">Login</a>
+            <?php endif; ?>
+        </div>
     </header>
 
     <main>

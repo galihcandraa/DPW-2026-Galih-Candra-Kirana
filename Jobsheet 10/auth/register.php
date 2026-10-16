@@ -20,7 +20,7 @@ unset($_SESSION['flash']);
         <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
     <?php endif; ?>
 
-    <form method="post" action="proses_register.php">
+    <form method="post" action="proses_register.php" novalidate>
         <p>
             <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama" required>
