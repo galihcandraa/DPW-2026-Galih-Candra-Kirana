@@ -113,6 +113,20 @@ main section:nth-of-type(2) h2 {
     grid-column: 1 / -1;
 }
 
+#uts {
+    background-color: #9A3412;
+    color: white;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+    transition: background-color 0.3s ease; 
+}
+
+#uts:hover {
+    background-color: #431407;
+}
+
 /* === Tabel === */
 table {
     width: 100%;
