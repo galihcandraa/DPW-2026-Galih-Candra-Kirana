@@ -30,14 +30,16 @@ if (!$anggota) {
     <?php endif; ?>
 
     <form id="form-tambah" method="post" action="proses_edit.php">
-        <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+        <?php echo csrf_field(); ?>
+        <input type="hidden" name="id" value="<?php echo (int)$anggota['id']; ?>">
         <p>
             <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama" value="<?php echo e($anggota['nama']); ?>" required>
         </p>
         <p>
             <label for="no_anggota">No. Anggota</label>
-            <input type="text" id="no_anggota" name="no_anggota" value="<?php echo e($anggota['no_anggota']); ?>" required>
+            <input type="text" id="no_anggota" name="no_anggota" value="<?php echo e($anggota['no_anggota']); ?>"
+                required>
         </p>
         <p>
             <label for="alamat">Alamat</label>

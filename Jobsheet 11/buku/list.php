@@ -29,7 +29,7 @@ $stmt->bindValue('offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 
 $daftarBuku = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$totalPages = max(1, (int) ceil($totalRows / $perPage)); 
+$totalPages = max(1, (int) ceil($totalRows / $perPage));
 ?>
 
 <section>
@@ -81,6 +81,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                                 <a href="edit.php?id=<?= $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+                                    <?php echo csrf_field(); ?>
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>
@@ -100,7 +101,4 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
 </section>
 
 <?php
-$extra_scripts = [
-    $base . 'assets/js/buku.js'
-];
 include __DIR__ . '/../includes/footer.php'; ?>

@@ -17,6 +17,7 @@ $daftarBuku = $_SESSION['anggota'] ?? [];
         </p>
     <?php endif; ?>
     <form id="form-tambah" method="post" action="proses_tambah.php" novalidate>
+        <?php echo csrf_field(); ?>
         <p>
             <label for="nama">Nama</label>
             <input type="text" id="judul" name="nama" required placeholder="Cth: Udin Setiawan">
