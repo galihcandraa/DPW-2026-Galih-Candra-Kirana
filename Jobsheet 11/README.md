@@ -1,23 +1,25 @@
-# LAPORAN PRAKTIKUM JOBSHEET 10
+# LAPORAN PRAKTIKUM JOBSHEET 11
 
-**Topik:** Autentikasi & Manajemen Sesi
+**Topik:** Keamanan Web Dasar
 
 ---
 
 ## 1.1 Tujuan
 
-1. Mengimplementasikan sistem autentikasi pengguna (Login, Register, dan Logout) menggunakan PHP murni.
+1. Mengimplementasikan mekanisme proteksi Cross-Site Request Forgery (CSRF) menggunakan token verifikasi kriptografis berbasis sesi ($\_SESSION).
 
-2. Mengelola sesi pengguna (Session) secara aman untuk membatasi hak akses pada halaman-halaman tertentu (Authorization).
+2. Menyisipkan token CSRF ke dalam seluruh formulir permintaan POST dan mengevaluasi validitasnya pada skrip penanganan data (proses\_\*.php dan hapus.php).
 
-3. Melakukan pembaruan skema database dengan menambahkan tabel baru untuk menyimpan kredensial pengguna secara persisten.
+3. Mengorganisasikan fungsi-fungsi pembantu umum ke dalam file modul helpers.php untuk meningkatkan modularitas dan keterbacaan kode.
+
+4. Memverifikasi keandalan proteksi CSRF melalui pengujian simulasi serangan menggunakan perintah HTTP (cURL).
 
 ---
 
 ## 1.2 Struktur Folder
 
 ```bash
-Jobsheet 10/
+Jobsheet 11/
 ├── anggota/
 │   ├── edit.php
 │   ├── hapus.php
@@ -46,11 +48,14 @@ Jobsheet 10/
 │   ├── proses_tambah.php
 │   └── tambah.php
 ├── docs/
+│   ├── security-checklist.md
 │   └── wireframe.md
 ├── includes/
 │   ├── auth.php
+│   ├── csrf.php
 │   ├── footer.php
 │   ├── header.php
+│   ├── helpers.php
 │   └── koneksi.php
 ├── sql/
 │   ├── 01_buku_anggota.sql
@@ -62,10 +67,10 @@ Jobsheet 10/
 
 ## 1.3 Ringkasan
 
-1. Modul Autentikasi Baru: Terdapat penambahan direktori auth/ secara khusus yang memuat antarmuka interaktif dan logika pemrosesan untuk pendaftaran akun baru (register.php, proses_register.php) serta otentikasi masuk (login.php, proses_login.php).
+1. Modul Proteksi CSRF (includes/csrf.php): Penambahan fungsi csrf_token(), csrf_field(), dan csrf_verify(). Fungsi ini menghasilkan token acak 32-byte kriptografis aman (random_bytes), menyisipkannya ke formulir HTML, serta memverifikasi kesesuaian token sebelum perintah SQL dieksekusi.
 
-2. Implementasi Tabel Kredensial: Penambahan file 02_users.sql di dalam folder sql/ yang memuat instruksi pembuatan tabel baru pada database PostgreSQL untuk menyimpan data akses pengguna secara terpisah dari data buku dan anggota.
+2. Modul Helper (includes/helpers.php): Penambahan file helpers.php di dalam direktori includes/ untuk menampung fungsi-fungsi umum (utility) yang dapat dipanggil kembali di berbagai modul aplikasi.
 
-3. Manajemen Sesi dan Akses (Otorisasi): Penambahan file auth.php di dalam direktori includes/. File ini difungsikan sebagai sistem pelindung (middleware) yang akan memeriksa keberadaan sesi yang sah, serta memblokir akses ke fitur CRUD jika pengguna belum melakukan login.
+3. Dokumentasi Keamanan (docs/security-checklist.md): Penambahan berkas security-checklist.md sebagai panduan verifikasi aspek keamanan aplikasi (penanganan SQL Injection, XSS, autentikasi sesi, dan CSRF).
 
-4. Fitur Pengakhiran Sesi: Penambahan skrip logout.php di dalam direktori auth/ yang bertugas untuk menghancurkan data sesi (session_destroy()) secara aman dan mengarahkan kembali pengguna ke halaman login atau beranda umum.
+4. Penerapan Guard CSRF pada Modul Transaksi: Penambahan eksekusi csrf_verify() pada seluruh skrip penanganan formulir (proses_tambah.php, proses_edit.php, hapus.php, proses_login.php, dan proses_register.php) untuk menolak transaksi yang tidak menyertakan token CSRF sah dengan status HTTP 403 Forbidden.
