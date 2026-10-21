@@ -72,19 +72,19 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                     <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
                             <td>
-                                <?php echo $anggota['no_anggota'] ?>
+                                <?php echo e($anggota['no_anggota']) ?>
                             </td>
                             <td>
-                                <?php echo $anggota['nama'] ?>
+                                <?php echo e($anggota['nama']) ?>
                             </td>
                             <td>
-                                <?php echo $anggota['alamat'] ?>
+                                <?php echo e($anggota['alamat']) ?>
                             </td>
                             <td>
-                                <?php echo $anggota['no_hp'] ?>
+                                <?php echo e($anggota['no_hp']) ?>
                             </td>
                             <td>
-                                <?php echo $anggota['email'] ?>
+                                <?php echo e($anggota['email']) ?>
                             </td>
                             <td style="display: flex; gap: 0;">
                                 <button type="button">Detail</button>
