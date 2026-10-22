@@ -183,7 +183,7 @@ td button {
     font-size: 0.85rem;
 }
 
-td button:first-of-type {
+td button:first-of-type, form button {
     background-color: #446fdb;
     color: #fff;
 }
@@ -239,7 +239,7 @@ form button[type="submit"] {
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
 }
