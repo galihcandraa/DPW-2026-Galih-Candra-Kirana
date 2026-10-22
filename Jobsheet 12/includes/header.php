@@ -46,6 +46,12 @@ $base = $__rel === '' ? '' : str_repeat('../', substr_count($__rel, '/') + 1);
                             class="<?php echo ($active_page == 'list_anggota' ? 'active' : '') ?>">Daftar Anggota</a></li>
                     <li><a href="<?php echo $base; ?>anggota/tambah.php"
                             class="<?php echo ($active_page == 'tambah_anggota' ? 'active' : '') ?>">Tambah Anggota</a></li>
+                    <li><a href="<?php echo $base; ?>peminjaman/tambah.php"
+                            class="<?php echo ($active_page == 'peminjam_baru' ? 'active' : '') ?>">Peminjaman Baru</a></li>
+                    <li><a href="<?php echo $base; ?>peminjaman/kembali.php"
+                            class="<?php echo ($active_page == 'pengembalian' ? 'active' : '') ?>">Pengembalian</a></li>
+                    <li><a href="<?php echo $base; ?>peminjaman/riwayat.php"
+                            class="<?php echo ($active_page == 'riwayat' ? 'active' : '') ?>">Riwayat</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
