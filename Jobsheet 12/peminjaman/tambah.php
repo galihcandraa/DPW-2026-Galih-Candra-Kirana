@@ -8,8 +8,8 @@ require __DIR__ . '/../includes/koneksi.php';
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-$daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY nama")->fetchAll(PDO::FETCH_ASSOC);
-$daftarBukuTersedia = $pdo->query("SELECT * FROM buku WHERE stok > 0 ORDER BY judul")->fetchAll(PDO::FETCH_ASSOC);
+$daftarAnggota = $pdo->query("SELECT * FROM anggota WHERE deleted_at IS NULL ORDER BY nama")->fetchAll(PDO::FETCH_ASSOC);
+$daftarBukuTersedia = $pdo->query("SELECT * FROM buku WHERE stok > 0 AND deleted_at IS NULL ORDER BY judul")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <section>
     <h2>Peminjaman Buku Baru</h2>

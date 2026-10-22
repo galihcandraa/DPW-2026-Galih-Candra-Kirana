@@ -6,29 +6,10 @@ require __DIR__ . '/includes/koneksi.php';
 
 $countDbBuku = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
 $countdDbAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+$totalDipinjam = $pdo->query("SELECT COUNT(*) FROM peminjaman WHERE status = 'dipinjam'")->fetchColumn();
 
-$jsonBukuCount = 0;
-$jsonAnggotaCount = 0;
-
-$fileBuku = __DIR__ . '/data/buku.json';
-if (file_exists($fileBuku)) {
-    $dataBukuJSON = json_decode(file_get_contents($fileBuku), true);
-    if (is_array($dataBukuJSON)) {
-        $jsonBukuCount = count($dataBukuJSON);
-    }
-}
-
-$fileAnggota = __DIR__ . '/data/anggota.json';
-if (file_exists($fileAnggota)) {
-    $dataAnggotaJSON = json_decode(file_get_contents($fileAnggota), true);
-    if (is_array($dataAnggotaJSON)) {
-        $jsonAnggotaCount = count($dataAnggotaJSON);
-    }
-}
-
-// 3. Jumlahkan data Database + data JSON
-$totalBuku = $countDbBuku + $jsonBukuCount;
-$totalAnggota = $countdDbAnggota + $jsonAnggotaCount;
+$totalBuku = $countDbBuku;
+$totalAnggota = $countdDbAnggota;
 ?>
 
 <section>
@@ -50,7 +31,7 @@ $totalAnggota = $countdDbAnggota + $jsonAnggotaCount;
 
     <article>
         <h3>Sedang Dipinjam</h3>
-        <p>2</p>
+        <p><?php echo $totalDipinjam; ?></p>
     </article>
 
     <article>
